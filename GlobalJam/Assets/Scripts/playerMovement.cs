@@ -8,7 +8,6 @@ public class playerMovement : MonoBehaviour
 {
     [Header("Components")]
     private Rigidbody2D rigidBody;
-    //private playerEffects playerEffects;
 
     [Header("Movement Stats")]
     [SerializeField, Range(0f, 20f)][Tooltip("Maximum movement speed")] 
@@ -48,29 +47,7 @@ public class playerMovement : MonoBehaviour
     [SerializeField] private BoolReference canMove;
     [SerializeField] private BoolReference onGround;
 
-    [Header("Dash variables")]
-    [SerializeField] private bool _canDash;
-    [SerializeField] private bool _isDashing;
-    [Range(10, 50)]
-    [SerializeField] private float dashingPower = 24f;
-    [Range(0, 1)]
-    [SerializeField] private float dashTime = 0.2f;
-    [Range(0, 3)]
-    [SerializeField] private float dashingCooldown = 1f;
-
-    [SerializeField] private float dashAnimationTime = 0.15f;
-    private bool dashAnimation;
-    [SerializeField] private ParticleSystem dashParticles;
-
     [SerializeField] private Vector2Reference PlayerPosition;
-
-    [Header("Animation")]
-    [SerializeField] private Animator playerAnimator;
-
-    [Header("Sound")]
-    //[SerializeField] private SoundEffectGameEvent SoundEffectRaiser;
-    [SerializeField] private SoundEffect _soundDash;
-    [SerializeField] private SoundEffect _soundJump;
 
     private void Awake()
     {
@@ -111,52 +88,11 @@ public class playerMovement : MonoBehaviour
         }
     }
 
-    //public void OnDash(InputAction.CallbackContext context)
-    //{
-    //    if (canMove.Value && _canDash)
-    //    {
-    //        if (context.performed)
-    //            StartCoroutine(Dash());
-    //    }
-    //}
-
-    //private IEnumerator Dash()
-    //{
-    //    _canDash = false;
-    //    _isDashing = true;
-    //    calculateGravity();
-
-    //    rigidBody.velocity = new Vector2(transform.localScale.x, 0.1f) * dashingPower;
-
-    //    SoundEffectRaiser.Raise(_soundDash);
-
-    //    StartCoroutine(SetDashAnimation());
-    //    yield return new WaitForSeconds(dashTime);
-
-    //    _isDashing = false;
-    //    calculateGravity();
-
-    //    directionX = xNewInput;
-
-    //    yield return new WaitForSeconds(dashingCooldown);
-    //    _canDash = true;
-    //}
-
-    //IEnumerator SetDashAnimation()
-    //{
-    //    dashAnimation = true;
-    //    var emission = dashParticles.emission;
-    //    emission.enabled = true;
-    //    yield return new WaitForSeconds(dashAnimationTime);
-    //    dashAnimation = false;
-    //    emission.enabled = false; 
-    //}
-
     private void Update()
     {
         PlayerPosition.Value = transform.position;
 
-        if (!canMove.Value || _isDashing || directionX == 0)
+        if (!canMove.Value || directionX == 0)
         {
             directionX = 0;
             pressingKey = false;
@@ -170,10 +106,6 @@ public class playerMovement : MonoBehaviour
         desiredVelocity = new Vector2(directionX, 0f) * Mathf.Max(maxSpeed * _slowDownFactor.Value, 0f);
 
         JumpUpdate();
-
-        //playerAnimator.SetBool("Dashing", dashAnimation);
-        //playerAnimator.SetBool("Jumping", !onGround.Value);
-        //playerAnimator.SetBool("Running", Mathf.RoundToInt(directionX) != 0);
     }
 
     private void FixedUpdate()
@@ -333,9 +265,7 @@ public class playerMovement : MonoBehaviour
 
     private void calculateGravity()
     {
-        if (_isDashing)
-            gravMultiplier = 0;
-        else if (rigidBody.velocity.y > 0.01f)
+        if (rigidBody.velocity.y > 0.01f)
         {
             if (onGround.Value)
             {
@@ -458,7 +388,5 @@ public class playerMovement : MonoBehaviour
     public void ResetLevel()
     {
         rigidBody.velocity = Vector2.zero;
-        _canDash = true;
-        _isDashing = false;
     }
 }
