@@ -1,4 +1,4 @@
-﻿using ScriptableArchitecture.Data;
+using ScriptableArchitecture.Data;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -64,6 +64,7 @@ public class playerMovement : MonoBehaviour
 
     public void OnMovement(InputAction.CallbackContext context)
     {
+        //Debug.Log("Moving");
         if (canMove.Value)
         {
             directionX = context.ReadValue<float>();
