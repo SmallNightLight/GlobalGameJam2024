@@ -11,10 +11,6 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField][Tooltip("The box for the ground checking")] private Rect groundCheckBox;
     [SerializeField][Tooltip("Which layers are read as the ground")] private LayerMask groundLayer;
 
-    [Header("Tiles Collision variables")]
-    [SerializeField] private TileEvent[] tileEvents;
-    private Dictionary<TileBase, CollisionEvent> _effectMap;
-
     [System.Serializable]
     public class CollisionEvent : UnityEvent<Collision2D> { }
 
@@ -27,15 +23,6 @@ public class PlayerCollision : MonoBehaviour
 
     [SerializeField] private BoolReference _onGround;
 
-    private void OnEnable()
-    {
-        if (_effectMap != null)
-            return;
-
-        _effectMap = new Dictionary<TileBase, CollisionEvent>(tileEvents.Length);
-        foreach (var entry in tileEvents)
-            _effectMap.Add(entry.tile, entry.collisionEvent);
-    }
 
     private void FixedUpdate()
     {
@@ -44,33 +31,6 @@ public class PlayerCollision : MonoBehaviour
         
         if (rayCasts.Length != 0)
         {
-            var map = rayCasts[0].collider.gameObject.GetComponent<Tilemap>();
-
-            if (map == null)
-                return;
-
-            var grid = map.layoutGrid;
-
-            List<CollisionEvent> collisionEvents = new List<CollisionEvent>();
-
-            foreach (RaycastHit2D contact in rayCasts)
-            {
-                Vector3 contactPoint = contact.point - 0.05f * contact.normal;
-                Vector3 gridPosition = grid.transform.InverseTransformPoint(contactPoint);
-                Vector3Int cell = grid.LocalToCell(gridPosition);
-
-                var tile = map.GetTile(cell);
-
-                if (tile == null)
-                    continue;
-
-                if (_effectMap.TryGetValue(tile, out CollisionEvent collisionEvent) && collisionEvent != null)
-                    collisionEvents.Add(collisionEvent);
-            }
-
-            foreach (CollisionEvent collisionEvent in collisionEvents)
-                collisionEvent.Invoke(null);
-
             _onGround.Value = true;
         }
         else
@@ -101,27 +61,27 @@ public class PlayerCollision : MonoBehaviour
 
     private void CheckTile(Collision2D collision)
     {      
-        var map = collision.gameObject.GetComponent<Tilemap>();
-        var grid = map.layoutGrid;
+        //var map = collision.gameObject.GetComponent<Tilemap>();
+        //var grid = map.layoutGrid;
 
-        List<CollisionEvent> collisionEvents = new List<CollisionEvent>();
+        //List<CollisionEvent> collisionEvents = new List<CollisionEvent>();
 
-        foreach(ContactPoint2D contact in collision.contacts)
-        {
-            Vector3 contactPoint = contact.point - 0.05f * contact.normal;
-            Vector3 gridPosition = grid.transform.InverseTransformPoint(contactPoint);
-            Vector3Int cell = grid.LocalToCell(gridPosition);
+        //foreach(ContactPoint2D contact in collision.contacts)
+        //{
+        //    Vector3 contactPoint = contact.point - 0.05f * contact.normal;
+        //    Vector3 gridPosition = grid.transform.InverseTransformPoint(contactPoint);
+        //    Vector3Int cell = grid.LocalToCell(gridPosition);
 
-            var tile = map.GetTile(cell);
+        //    var tile = map.GetTile(cell);
 
-            if (tile == null)
-                continue;
+        //    if (tile == null)
+        //        continue;
 
-            if (_effectMap.TryGetValue(tile, out CollisionEvent collisionEvent) && collisionEvent != null)
-               collisionEvents.Add(collisionEvent);
-        }
+        //    if (_effectMap.TryGetValue(tile, out CollisionEvent collisionEvent) && collisionEvent != null)
+        //       collisionEvents.Add(collisionEvent);
+        //}
 
-        foreach(CollisionEvent collisionEvent in collisionEvents)
-            collisionEvent.Invoke(collision);
+        //foreach(CollisionEvent collisionEvent in collisionEvents)
+        //    collisionEvent.Invoke(collision);
     }
 }

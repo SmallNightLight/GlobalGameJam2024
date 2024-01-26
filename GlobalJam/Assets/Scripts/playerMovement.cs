@@ -271,8 +271,6 @@ public class playerMovement : MonoBehaviour
 
     void JumpUpdate()
     {
-        
-
         setPhysics();
 
         //Jump buffer allows us to queue up a jump, which will play when we next hit the ground
@@ -282,8 +280,6 @@ public class playerMovement : MonoBehaviour
             //All the while, the DoAJump function will repeatedly be fired off
             if (desiredJump)
             {
-                Debug.Log("JUMP");
-
                 jumpBufferCounter += Time.deltaTime;
 
                 if (jumpBufferCounter > jumpBuffer)
