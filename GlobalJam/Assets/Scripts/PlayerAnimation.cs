@@ -9,6 +9,8 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private Vector2Reference _velocity;
     [SerializeField] private BoolReference _onGround;
 
+    [SerializeField] BoolReference isVisible;
+
     private Animator _animator;
 
     private void Start()
@@ -19,6 +21,10 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Update()
     {
+        if(!isVisible.Value)
+        {
+            gameObject.SetActive(false);
+        }
         _animator.SetBool("IsMoving", Mathf.RoundToInt(_horizontalInput.Value) != 0);
 
         if (!_onGround.Value)

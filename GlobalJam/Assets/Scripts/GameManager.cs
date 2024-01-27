@@ -39,6 +39,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] BoolReference canMove;
 
+    [SerializeField] Vector2Reference playerPos;
+    [SerializeField] BoolReference playerIsVisible;
+    [SerializeField] GameObject TreeAnim;
+
     private void Awake()
     {
         if(Instance == null)
@@ -121,7 +125,8 @@ public class GameManager : MonoBehaviour
     IEnumerator TreeDeath()
     {
         //play animation
-
+        playerIsVisible.Value = false;
+        yield return Instantiate(TreeAnim, playerPos.Value, Quaternion.identity);
         yield return StartCoroutine(ShowTragicEnd());  
     }
 
@@ -151,12 +156,15 @@ public class GameManager : MonoBehaviour
 
         /*currentDeathInScene = deathOrder[0];
         deathOrder.RemoveAt(0);*/
+        canMove.Value = true;
+        playerIsVisible.Value = true;
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
 
         while (!asyncLoad.isDone)
         {
             yield return null;
         }
+
 
         StartCoroutine(CreateDeathInScene());
 
@@ -175,6 +183,8 @@ public class GameManager : MonoBehaviour
         {
             yield return null;
         }
+
+
 
         StartCoroutine(CreateDeathInScene());
 

@@ -6,6 +6,7 @@ MonoImporter:
   defaultReferences:
   - fadeScreenPrefab: {fileID: 6697112574875984837, guid: 0bf2c1506a3de7444b33c7008c582c68, type: 3}
   - laughingEndingPrefab: {fileID: 1157138142815028645, guid: c71d7d4e8339bd04db8d3d7d3e5d21df, type: 3}
+  - TreeAnim: {fileID: 910155183583109439, guid: 0bb92573219918547889863222d134e9, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
