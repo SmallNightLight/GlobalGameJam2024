@@ -28,6 +28,12 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> deathPrefabs = new List<GameObject>();
 
+    public GameObject fadeScreenPrefab;
+
+    GameObject fadeScreen;
+
+    List<GameObject> deathPrefabInScene;
+
     private void Awake()
     {
         if(Instance == null)
@@ -40,7 +46,11 @@ public class GameManager : MonoBehaviour
         }
 
         //currentDeathInScene = (deathEvents)UnityEngine.Random.Range(0, Enum.GetValues(typeof(deathEvents)).Length);
-        StartCoroutine(CreateDeathOrder());
+        //StartCoroutine(CreateDeathOrder());
+
+        deathPrefabInScene = new List<GameObject>();
+        //REMOVE LATER !
+        StartCoroutine(CreateDeathInScene());
         DontDestroyOnLoad(gameObject);
     }
 
@@ -64,13 +74,17 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CreateDeathInScene()
     {
-        Instantiate(deathPrefabs.Find(obj=> string.Equals(obj.name, currentDeathInScene.ToString())), new Vector3(), Quaternion.identity);
+        foreach(var death in deathPrefabs)
+        {
+            deathPrefabInScene.Add(Instantiate(death, new Vector3(), Quaternion.identity));
+        }
+        fadeScreen = Instantiate(fadeScreenPrefab, new Vector3(), Quaternion.identity);
         yield return null;
     }
 
-    public void Death()
+    public void Death(deathEvents deathType)
     {
-        StartCoroutine(currentDeathInScene.ToString() + "Death");
+        StartCoroutine(deathType + "Death");
     }
 
     IEnumerator ReversedDeath()
@@ -90,6 +104,9 @@ public class GameManager : MonoBehaviour
 
     IEnumerator TreeDeath()
     {
+        //play animation
+        //deathPrefabInScene.Find("Tree".Equals).GetComponent<TreeDeath>().diedFromThisOnce = true;
+        yield return StartCoroutine(fadeScreen.GetComponent<FadeInOut>().FadeInOutColor(false));
         yield return StartCoroutine(ResetLevelAndChooseDeath());
     }
 
@@ -110,19 +127,36 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ResetLevelAndChooseDeath()
     {
-        if(deathOrder.Count > 0)
+
+        /*currentDeathInScene = deathOrder[0];
+        deathOrder.RemoveAt(0);*/
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+
+        while (!asyncLoad.isDone)
         {
-            currentDeathInScene = deathOrder[0];
-            deathOrder.RemoveAt(0);
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+            yield return null;
+        }
 
-            while (!asyncLoad.isDone)
-            {
-                yield return null;
-            }
+        StartCoroutine(CreateDeathInScene());
 
-            StartCoroutine(CreateDeathInScene());
-        }     
+        yield return null;
+    }
+
+    public void FirstLvlInitListener()
+    {
+        StartCoroutine(FirstLvlInit());
+    }
+    IEnumerator FirstLvlInit()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("MainScene");
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        StartCoroutine(CreateDeathInScene());
+
         yield return null;
     }
 }
