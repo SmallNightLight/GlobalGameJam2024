@@ -2214,7 +2214,7 @@ MonoBehaviour:
     _constant: 0
   TreeAnim: {fileID: 910155183583109439, guid: 0bb92573219918547889863222d134e9, type: 3}
   ExplodingAnim: {fileID: 7656440925033197129, guid: 0db41393aeadcac4aadad23975315bb5, type: 3}
-  EatenByRock: {fileID: 2419896587928672981, guid: 75a27dd3589807f4eaa0ad8f7d807dcb, type: 3}
+  EatenByRock: {fileID: 4203450503846906571, guid: d6a4b956855613f469f8367f8e7c2046, type: 3}
 --- !u!4 &314467206
 Transform:
   m_ObjectHideFlags: 0
