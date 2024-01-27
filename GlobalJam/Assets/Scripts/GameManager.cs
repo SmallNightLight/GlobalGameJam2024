@@ -1,3 +1,4 @@
+using ScriptableArchitecture.Data;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ public class GameManager : MonoBehaviour
     public enum deathEvents
     {
         Reversed,
-        TimeLimit,
+        Spear,
         Platform,
         Tree,
         Crush,
@@ -33,6 +34,10 @@ public class GameManager : MonoBehaviour
     GameObject fadeScreen;
 
     List<GameObject> deathPrefabInScene;
+
+    public GameObject laughingEndingPrefab;
+
+    [SerializeField] BoolReference canMove;
 
     private void Awake()
     {
@@ -87,44 +92,58 @@ public class GameManager : MonoBehaviour
         StartCoroutine(deathType + "Death");
     }
 
+    IEnumerator ShowTragicEnd()
+    {
+        canMove.Value = false;
+        yield return Instantiate(laughingEndingPrefab, new Vector3(), Quaternion.identity);
+        yield return new WaitForSeconds(1.5f);
+        yield return StartCoroutine(fadeScreen.GetComponent<FadeInOut>().FadeInOutColor(false));
+        yield return StartCoroutine(ResetLevelAndChooseDeath());
+    }
+
     IEnumerator ReversedDeath()
     {
         yield return StartCoroutine(ResetLevelAndChooseDeath());
     }
 
-    IEnumerator TimeLimitDeath()
+    IEnumerator SpearDeath()
     {
         yield return StartCoroutine(ResetLevelAndChooseDeath());
     }
 
     IEnumerator PlatformDeath()
     {
+        //animation
+
         yield return StartCoroutine(ResetLevelAndChooseDeath());
     }
 
     IEnumerator TreeDeath()
     {
         //play animation
-        yield return StartCoroutine(fadeScreen.GetComponent<FadeInOut>().FadeInOutColor(false));
-        yield return StartCoroutine(ResetLevelAndChooseDeath());
+
+        yield return StartCoroutine(ShowTragicEnd());  
     }
 
     IEnumerator CrushDeath() 
     {
-        yield return StartCoroutine(fadeScreen.GetComponent<FadeInOut>().FadeInOutColor(false));
-        yield return StartCoroutine(ResetLevelAndChooseDeath());
+        //animation
+
+        yield return StartCoroutine(ShowTragicEnd());
     }
 
     IEnumerator CubeDeath()
     {
         //play animation
-        yield return StartCoroutine(fadeScreen.GetComponent<FadeInOut>().FadeInOutColor(false));
-        yield return StartCoroutine(ResetLevelAndChooseDeath());
+
+        yield return StartCoroutine(ShowTragicEnd());
     }
 
     IEnumerator StoneDeath()
     {
-        yield return StartCoroutine(ResetLevelAndChooseDeath());
+        //animation
+
+        yield return StartCoroutine(ShowTragicEnd());
     }
 
     IEnumerator ResetLevelAndChooseDeath()

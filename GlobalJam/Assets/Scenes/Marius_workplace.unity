@@ -649,6 +649,7 @@ MonoBehaviour:
   - {fileID: 536239298947972886, guid: 4b50435fdf4221e47ac8e24add0710ce, type: 3}
   - {fileID: 6114680625403722311, guid: 0ed8e5823b2fe92459c54523e1ae37fe, type: 3}
   fadeScreenPrefab: {fileID: 6697112574875984837, guid: 0bf2c1506a3de7444b33c7008c582c68, type: 3}
+  laughingEndingPrefab: {fileID: 1157138142815028645, guid: c71d7d4e8339bd04db8d3d7d3e5d21df, type: 3}
 --- !u!4 &314467206
 Transform:
   m_ObjectHideFlags: 0
@@ -738,6 +739,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 996788652647471141, guid: a457c8466b6887c409e38e1daaa98809, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3258853729871288353, guid: a457c8466b6887c409e38e1daaa98809, type: 3}
       propertyPath: _speed
       value: 6
@@ -748,7 +753,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3258853729871288353, guid: a457c8466b6887c409e38e1daaa98809, type: 3}
       propertyPath: _endPosition.y
-      value: -27.1
+      value: -19.72
       objectReference: {fileID: 0}
     - target: {fileID: 3258853729871288353, guid: a457c8466b6887c409e38e1daaa98809, type: 3}
       propertyPath: _downToPlayerPosition.x
@@ -756,7 +761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3258853729871288353, guid: a457c8466b6887c409e38e1daaa98809, type: 3}
       propertyPath: _downToPlayerPosition.y
-      value: -19.72
+      value: -27.1
       objectReference: {fileID: 0}
     - target: {fileID: 4243070028428525138, guid: a457c8466b6887c409e38e1daaa98809, type: 3}
       propertyPath: m_LocalPosition.x
@@ -764,7 +769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4243070028428525138, guid: a457c8466b6887c409e38e1daaa98809, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -19.72
+      value: -27.1
       objectReference: {fileID: 0}
     - target: {fileID: 4243070028428525138, guid: a457c8466b6887c409e38e1daaa98809, type: 3}
       propertyPath: m_LocalPosition.z
