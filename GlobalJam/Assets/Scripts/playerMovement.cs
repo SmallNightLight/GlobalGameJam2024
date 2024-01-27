@@ -29,7 +29,7 @@ public class playerMovement : MonoBehaviour
     [Tooltip("When false, the charcter will skip acceleration and deceleration and instantly move and stop")] public bool useAcceleration;
 
     [Header("Calculations")]
-    private float directionX;
+    [SerializeField] private FloatReference _directionX;
     private Vector2 desiredVelocity;
     [SerializeField] private Vector2Reference velocity;
     private float maxSpeedChange;
@@ -37,7 +37,6 @@ public class playerMovement : MonoBehaviour
     private float deceleration;
     private float turnSpeed;
     private bool pressingKey;
-    private float xNewInput;
 
     [Header("Slow Down variables")]
     [SerializeField] private FloatReference _slowDownFactor;
@@ -47,6 +46,7 @@ public class playerMovement : MonoBehaviour
     [SerializeField] private BoolReference canMove;
     [SerializeField] private BoolReference onGround;
 
+    [SerializeField] private FloatReference _horizontalInput;
     [SerializeField] private Vector2Reference PlayerPosition;
 
     private void Awake()
@@ -67,8 +67,7 @@ public class playerMovement : MonoBehaviour
         //Debug.Log("Moving");
         if (canMove.Value)
         {
-            directionX = context.ReadValue<float>();
-            xNewInput = directionX;   
+            _directionX.Value = context.ReadValue<float>();
         }
     }
 
@@ -93,18 +92,18 @@ public class playerMovement : MonoBehaviour
     {
         PlayerPosition.Value = transform.position;
 
-        if (!canMove.Value || directionX == 0)
+        if (!canMove.Value || _directionX.Value == 0)
         {
-            directionX = 0;
+            _directionX.Value = 0;
             pressingKey = false;
         }
         else
         {
-            transform.localScale = new Vector3(directionX > 0 ? 1 : -1, 1, 1);
+            transform.localScale = new Vector3(_directionX.Value > 0 ? 1 : -1, 1, 1);
             pressingKey = true;
         }
 
-        desiredVelocity = new Vector2(directionX, 0f) * Mathf.Max(maxSpeed * _slowDownFactor.Value, 0f);
+        desiredVelocity = new Vector2(_directionX.Value, 0f) * Mathf.Max(maxSpeed * _slowDownFactor.Value, 0f);
 
         JumpUpdate();
     }
@@ -133,7 +132,7 @@ public class playerMovement : MonoBehaviour
         if (pressingKey) 
         {
             //If the sign (i.e. positive or negative) of our input direction doesn't match our movement, it means we're turning around and so should use the turn speed stat.
-            if (Mathf.Sign(directionX) != Mathf.Sign(velocity.Value.x))
+            if (Mathf.Sign(_directionX.Value) != Mathf.Sign(velocity.Value.x))
                 maxSpeedChange = turnSpeed * Time.deltaTime;
             else 
             {
@@ -165,7 +164,7 @@ public class playerMovement : MonoBehaviour
     //Jumping
 
     [Header("Jump Stats")]
-    [SerializeField, Range(2f, 5.5f)][Tooltip("Maximum jump height")] 
+    [SerializeField, Range(2f, 10f)][Tooltip("Maximum jump height")] 
     public float jumpHeight = 7.3f;
     [SerializeField, Range(0.2f, 1.25f)][Tooltip("How long it takes to reach that height before coming back down")] 
     public float timeToJumpApex;
