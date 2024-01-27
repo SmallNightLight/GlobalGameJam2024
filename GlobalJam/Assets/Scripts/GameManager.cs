@@ -105,7 +105,6 @@ public class GameManager : MonoBehaviour
     IEnumerator TreeDeath()
     {
         //play animation
-        //deathPrefabInScene.Find("Tree".Equals).GetComponent<TreeDeath>().diedFromThisOnce = true;
         yield return StartCoroutine(fadeScreen.GetComponent<FadeInOut>().FadeInOutColor(false));
         yield return StartCoroutine(ResetLevelAndChooseDeath());
     }
@@ -117,6 +116,8 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CubeDeath()
     {
+        //play animation
+        yield return StartCoroutine(fadeScreen.GetComponent<FadeInOut>().FadeInOutColor(false));
         yield return StartCoroutine(ResetLevelAndChooseDeath());
     }
 
