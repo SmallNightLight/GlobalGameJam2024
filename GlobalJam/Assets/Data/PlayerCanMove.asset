@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PlayerCanMove
   m_EditorClassIdentifier: 
   VariableType: 0
-  InitializeTypeVariable: 0
-  _value: 0
-  _startValue: 0
+  InitializeTypeVariable: 1
+  _value: 1
+  _startValue: 1
   InitializeTypeRuntimeSet: 0
   _runtimeSet: 
   _startRuntimeSet: 
