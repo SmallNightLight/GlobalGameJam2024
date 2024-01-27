@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3093980876171872648}
   - component: {fileID: 5579659958321482079}
+  - component: {fileID: 2266621297447484399}
   m_Layer: 0
   m_Name: RockPivot
   m_TagString: Untagged
@@ -55,6 +56,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2266621297447484399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4203450503846906571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6931d3706572074419cc41698f0e9575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bloodyPlayerPrefab: {fileID: 1053687968169619968, guid: 1c9053a889c4ffa42a127f5cff699f43, type: 3}
 --- !u!1 &5141493407071180733
 GameObject:
   m_ObjectHideFlags: 0
