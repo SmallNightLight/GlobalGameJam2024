@@ -45,10 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57bc001e9ed0e9146aa8dfd4d16c0e91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathTree: {fileID: 7839140738462936055, guid: 461eed67aa6237b4aa2d13dc774783bb, type: 3}
-  noDeathTree: {fileID: 7839140738462936055, guid: 53d8ab492f2464a48876a756b1d5fd8d, type: 3}
+  deathObject: {fileID: 7839140738462936055, guid: 461eed67aa6237b4aa2d13dc774783bb, type: 3}
   deathSpawn: {fileID: 6098750233783242274}
-  diedFromThisOnce: 0
 --- !u!1 &2131801210365617000
 GameObject:
   m_ObjectHideFlags: 0
