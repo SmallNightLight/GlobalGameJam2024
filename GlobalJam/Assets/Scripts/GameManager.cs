@@ -110,7 +110,8 @@ public class GameManager : MonoBehaviour
     }
 
     IEnumerator CrushDeath() 
-    { 
+    {
+        yield return StartCoroutine(fadeScreen.GetComponent<FadeInOut>().FadeInOutColor(false));
         yield return StartCoroutine(ResetLevelAndChooseDeath());
     }
 
