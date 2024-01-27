@@ -151,7 +151,8 @@ public class GameManager : MonoBehaviour
     IEnumerator StoneDeath()
     {
         //animation
-
+        playerIsVisible.Value = false;
+        yield return Instantiate(EatenByRock, EatenByRock.transform.position, Quaternion.identity);
         yield return StartCoroutine(ShowTragicEnd());
     }
 
