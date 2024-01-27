@@ -16,6 +16,7 @@ public class InitDeathFromCollider : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
         activeTreeEvent.Value = true;
         GameManager.Instance.Death(typeOfDeath);      
     }

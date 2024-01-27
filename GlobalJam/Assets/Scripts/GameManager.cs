@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Vector2Reference playerPos;
     [SerializeField] BoolReference playerIsVisible;
     [SerializeField] GameObject TreeAnim;
+    [SerializeField] GameObject ExplodingAnim;
+    [SerializeField] GameObject EatenByRock;
 
     private void Awake()
     {
@@ -108,17 +110,19 @@ public class GameManager : MonoBehaviour
     IEnumerator ReversedDeath()
     {
         yield return StartCoroutine(ResetLevelAndChooseDeath());
+        //no need/unused idea of reversed controls
     }
 
     IEnumerator SpearDeath()
     {
-        yield return StartCoroutine(ResetLevelAndChooseDeath());
+        yield return StartCoroutine(Explode());
+        yield return StartCoroutine(ShowTragicEnd());
     }
 
     IEnumerator PlatformDeath()
     {
         //animation
-
+        //no need/won t implement false platform anymore
         yield return StartCoroutine(ResetLevelAndChooseDeath());
     }
 
@@ -133,14 +137,14 @@ public class GameManager : MonoBehaviour
     IEnumerator CrushDeath() 
     {
         //animation
-
+        yield return StartCoroutine(Explode());
         yield return StartCoroutine(ShowTragicEnd());
     }
 
     IEnumerator CubeDeath()
     {
         //play animation
-
+        yield return StartCoroutine(Explode());
         yield return StartCoroutine(ShowTragicEnd());
     }
 
@@ -151,6 +155,12 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(ShowTragicEnd());
     }
 
+    IEnumerator Explode()
+    {
+        playerIsVisible.Value = false;
+        yield return Instantiate(ExplodingAnim, playerPos.Value, Quaternion.identity);
+        yield return new WaitForSeconds(0.5f);
+    }
     IEnumerator ResetLevelAndChooseDeath()
     {
 
@@ -166,9 +176,9 @@ public class GameManager : MonoBehaviour
         }
 
 
-        StartCoroutine(CreateDeathInScene());
+        StartCoroutine(CreateDeathInScene());   
 
-        yield return null;
+        yield return StartCoroutine(fadeScreen.GetComponent<FadeInOut>().FadeInOutColor(true)); ;
     }
 
     public void FirstLvlInitListener()
