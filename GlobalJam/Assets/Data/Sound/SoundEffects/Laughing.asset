@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d16037ae7172ca45835c73bde4892bd, type: 3}
-  m_Name: BloodSplatter
+  m_Name: Laughing
   m_EditorClassIdentifier: 
   VariableType: 0
   InitializeTypeVariable: 2
@@ -21,9 +21,9 @@ MonoBehaviour:
     Pitch: 1
     Loop: 0
   _startValue:
-    audioMixerSnapshot: {fileID: 24300002, guid: 1fcd400ef6e57ac4fa8e01d062852727, type: 2}
-    AudioClip: {fileID: 8300000, guid: e0dbca886debf01478027f4b22515289, type: 3}
-    Volume: 0.6
+    audioMixerSnapshot: {fileID: 0}
+    AudioClip: {fileID: 8300000, guid: 062457bb3dabc5b42a269eabffd577ee, type: 3}
+    Volume: 1
     Pitch: 1
     Loop: 0
   InitializeTypeRuntimeSet: 0

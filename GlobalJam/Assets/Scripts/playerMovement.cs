@@ -46,7 +46,6 @@ public class playerMovement : MonoBehaviour
     [SerializeField] private BoolReference canMove;
     [SerializeField] private BoolReference onGround;
 
-    [SerializeField] private FloatReference _horizontalInput;
     [SerializeField] private Vector2Reference PlayerPosition;
 
     private void Awake()
@@ -389,5 +388,6 @@ public class playerMovement : MonoBehaviour
     {
         rigidBody.velocity = Vector2.zero;
         velocity.Value = Vector2.zero;
+        _directionX.Value = 0f;
     }
 }

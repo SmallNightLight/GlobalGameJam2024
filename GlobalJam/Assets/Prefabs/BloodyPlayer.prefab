@@ -1027,6 +1027,24 @@ MonoBehaviour:
   - {fileID: 9064887942882662957}
   _force: 20
   _bloodPrefab: {fileID: 3623995612181037179, guid: f34afa2e62865f74da1f894d620e7e75, type: 3}
+  _soundEffectRaiser:
+    _isVariable: 1
+    _variable: {fileID: 11400000, guid: 39492007180ab1b438103e75b47e190e, type: 2}
+    _constant:
+      audioMixerSnapshot: {fileID: 0}
+      AudioClip: {fileID: 0}
+      Volume: 1
+      Pitch: 1
+      Loop: 0
+  _bloodHitSoundEffect:
+    _isVariable: 1
+    _variable: {fileID: 11400000, guid: 892e837064f307a49a5b58c87b1d00ed, type: 2}
+    _constant:
+      audioMixerSnapshot: {fileID: 0}
+      AudioClip: {fileID: 0}
+      Volume: 1
+      Pitch: 1
+      Loop: 0
 --- !u!1 &8177229514401086044
 GameObject:
   m_ObjectHideFlags: 0

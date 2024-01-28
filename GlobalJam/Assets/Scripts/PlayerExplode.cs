@@ -10,6 +10,9 @@ public class PlayerExplode : MonoBehaviour
     [SerializeField] private float _force = 10f;
     [SerializeField] private GameObject _bloodPrefab;
 
+    [SerializeField] private SoundEffectReference _soundEffectRaiser;
+    [SerializeField] private SoundEffectReference _bloodHitSoundEffect;
+
     private void Start()
     {
         //Explode on start
@@ -29,5 +32,7 @@ public class PlayerExplode : MonoBehaviour
                 Destroy(blood, 2f);
             }
         }
+
+        _soundEffectRaiser.Raise(_bloodHitSoundEffect.Value);
     }
 }
