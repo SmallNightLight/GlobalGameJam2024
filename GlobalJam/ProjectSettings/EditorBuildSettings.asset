@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Marius_workplace.unity
     guid: 76c3f490de606ac4285363aebc66f0c2
+  - enabled: 1
+    path: Assets/Scenes/NewDesign.unity
+    guid: 7b51ccdbb9e16f04c8a2b4c9c44abab4
   m_configObjects: {}

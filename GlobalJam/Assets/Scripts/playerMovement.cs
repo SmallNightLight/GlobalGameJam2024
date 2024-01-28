@@ -388,5 +388,6 @@ public class playerMovement : MonoBehaviour
     public void ResetLevel()
     {
         rigidBody.velocity = Vector2.zero;
+        velocity.Value = Vector2.zero;
     }
 }

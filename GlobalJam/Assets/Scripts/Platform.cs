@@ -13,6 +13,8 @@ public class Platform : MonoBehaviour
     private bool _movingToEnd = true;
     private SpriteRenderer _spriteRenderer;
 
+    [SerializeField] private bool _testAbove;
+
     private void Start()
     {
         _startPosition = transform.position;
@@ -30,7 +32,7 @@ public class Platform : MonoBehaviour
     private bool IsPlayerUnder()
     {
         bool inX = _playerPosition.Value.x > _spriteRenderer.bounds.min.x && _playerPosition.Value.x < _spriteRenderer.bounds.max.x;
-        bool inY = _playerPosition.Value.y < _spriteRenderer.bounds.min.y;
+        bool inY = _testAbove ? _playerPosition.Value.y > _spriteRenderer.bounds.max.y : _playerPosition.Value.y < _spriteRenderer.bounds.min.y;
 
         return inX && inY;
 
