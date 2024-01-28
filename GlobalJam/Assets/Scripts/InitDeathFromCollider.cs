@@ -12,7 +12,7 @@ public class InitDeathFromCollider : MonoBehaviour
     private void Start()
     {
         if (activeTreeEvent.Value)
-            Destroy(this);
+            Destroy(gameObject.GetComponent<BoxCollider2D>());
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

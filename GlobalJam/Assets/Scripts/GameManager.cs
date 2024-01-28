@@ -152,7 +152,8 @@ public class GameManager : MonoBehaviour
     {
         //animation
         playerIsVisible.Value = false;
-        yield return Instantiate(EatenByRock, EatenByRock.transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(1.5f);
+        //yield return Instantiate(EatenByRock, EatenByRock.transform.position, Quaternion.identity);
         yield return StartCoroutine(ShowTragicEnd());
     }
 
