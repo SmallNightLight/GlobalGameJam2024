@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace ScriptableArchitecture.Data
 {
+#if UNITY_EDITOR
     public class SoundToSO
     {
         [MenuItem("Convert/Sound/Sound to SO - Sound Effect")]
@@ -54,4 +55,5 @@ namespace ScriptableArchitecture.Data
             }
         }
     }
+#endif
 }

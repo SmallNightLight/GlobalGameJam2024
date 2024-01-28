@@ -71,9 +71,9 @@ namespace ScriptableArchitecture.Core
 
         public Stacktrace[] GetStackTraces() => new Stacktrace[] { _stacktrace };
 
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
         private Stacktrace _stacktrace = new Stacktrace(VariableType.Event, 100);
-#endif
+//#endif
     }
 
     public interface IGameEvent
