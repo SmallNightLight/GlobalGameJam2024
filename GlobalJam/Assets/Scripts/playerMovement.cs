@@ -25,6 +25,9 @@ public class playerMovement : MonoBehaviour
     [SerializeField, Range(0f, 100f)][Tooltip("How fast to stop when changing direction when in mid-air")] 
     public float maxAirTurnSpeed = 80f;
 
+    [SerializeField] private SoundEffectReference _soundEffectRaiser;
+    [SerializeField] private SoundEffectReference _jumpSFX;
+
     [Header("Options")]
     [Tooltip("When false, the charcter will skip acceleration and deceleration and instantly move and stop")] public bool useAcceleration;
 
@@ -334,6 +337,8 @@ public class playerMovement : MonoBehaviour
         //Create the jump, provided we are on the ground, in coyote time, or have a double jump available
         if (onGround.Value || (coyoteTimeCounter > 0.03f && coyoteTimeCounter < coyoteTime) || canJumpAgain)
         {
+            _soundEffectRaiser.Raise(_jumpSFX.Value);
+
             desiredJump = false;
             jumpBufferCounter = 0;
             coyoteTimeCounter = 0;

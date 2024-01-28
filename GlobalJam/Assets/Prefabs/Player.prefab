@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7424098984252041423}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,8 +77,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 325871049
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 614883612, guid: 8d186ec16ba35eb418a24c6b040fbca6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -135,10 +135,6 @@ MonoBehaviour:
     _isVariable: 1
     _variable: {fileID: 11400000, guid: 6ae601335f92eee49a6a2aae1d929a68, type: 2}
     _constant: 1
-  _horizontalInput:
-    _isVariable: 0
-    _variable: {fileID: 0}
-    _constant: 0
   PlayerPosition:
     _isVariable: 1
     _variable: {fileID: 11400000, guid: 09badede17d3f534e804188bef095281, type: 2}
@@ -265,8 +261,8 @@ MonoBehaviour:
     _variable: {fileID: 11400000, guid: 6ae601335f92eee49a6a2aae1d929a68, type: 2}
     _constant: 0
   isVisible:
-    _isVariable: 0
-    _variable: {fileID: 0}
+    _isVariable: 1
+    _variable: {fileID: 11400000, guid: 98857714b4342b94cb064f51f023a63a, type: 2}
     _constant: 0
   _soundEffectRaiser:
     _isVariable: 1
@@ -446,7 +442,7 @@ Transform:
   m_GameObject: {fileID: 8472755722986201812}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00000047683716, y: 3.3248005, z: -10}
+  m_LocalPosition: {x: -0.00000047683716, y: 3.3248007, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

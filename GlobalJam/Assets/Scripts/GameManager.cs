@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
 
         //REMOVE LATER ! //nvm
         coroutinesInMotion.Add(StartCoroutine(CreateDeathInScene()));
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         _deathCounter.Value++;
     }

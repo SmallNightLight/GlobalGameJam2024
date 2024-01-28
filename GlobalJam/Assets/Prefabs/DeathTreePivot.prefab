@@ -148,7 +148,24 @@ MonoBehaviour:
     _isVariable: 1
     _variable: {fileID: 11400000, guid: 40bf17163272a264698e88ec32c0763d, type: 2}
     _constant: 0
-  _isRock: 0
+  _soundEffectRaiser:
+    _isVariable: 1
+    _variable: {fileID: 11400000, guid: 39492007180ab1b438103e75b47e190e, type: 2}
+    _constant:
+      audioMixerSnapshot: {fileID: 0}
+      AudioClip: {fileID: 0}
+      Volume: 1
+      Pitch: 1
+      Loop: 0
+  _effect:
+    _isVariable: 1
+    _variable: {fileID: 11400000, guid: f60fb05b7bb57d4469ddc5e1c6e4ca56, type: 2}
+    _constant:
+      audioMixerSnapshot: {fileID: 0}
+      AudioClip: {fileID: 0}
+      Volume: 1
+      Pitch: 1
+      Loop: 0
 --- !u!1 &7839140738462936055
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +219,15 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2517648521464706117, guid: d24102eaef35fb64ebf42687979321f1, type: 3}
+      propertyPath: _effect._isVariable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2517648521464706117, guid: d24102eaef35fb64ebf42687979321f1, type: 3}
       propertyPath: activeTreeEvent._isVariable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2517648521464706117, guid: d24102eaef35fb64ebf42687979321f1, type: 3}
+      propertyPath: _soundEffectRaiser._isVariable
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5498010598441441086, guid: d24102eaef35fb64ebf42687979321f1, type: 3}
