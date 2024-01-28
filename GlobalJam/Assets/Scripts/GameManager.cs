@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
         coroutinesInMotion.Add(StartCoroutine(CreateDeathInScene()));
         DontDestroyOnLoad(gameObject);
 
-
+        _deathCounter.Value++;
     }
 
     /*IEnumerator CreateDeathOrder()
@@ -103,7 +103,6 @@ public class GameManager : MonoBehaviour
 
     public void Death(deathEvents deathType)
     {
-        _deathCounter.Value++;
         coroutinesInMotion.Add(StartCoroutine(deathType + "Death"));
     }
 

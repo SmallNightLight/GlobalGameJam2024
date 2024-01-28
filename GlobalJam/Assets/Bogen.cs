@@ -5,13 +5,15 @@ public class Bogen : MonoBehaviour
 {
     [SerializeField] private IntReference _deathCounter;
     [SerializeField] private int _beforeLives = 3;
+    [SerializeField] private GameObject _child;
 
     private void Start()
     {
         if (_deathCounter.Value >= _beforeLives)
         {
             GetComponent<SpriteRenderer>().enabled = false;
-            GetComponentInChildren<SpriteRenderer>().enabled = true;
+            GetComponent<PolygonCollider2D>().enabled = false;
+            _child.SetActive(true);
         }
     }
 
