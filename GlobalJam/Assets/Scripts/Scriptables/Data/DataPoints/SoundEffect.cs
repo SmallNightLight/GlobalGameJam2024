@@ -16,5 +16,12 @@ namespace ScriptableArchitecture.Data
         public float Pitch;
 
         public bool Loop;
+
+        public SoundEffect()
+        {
+            Volume = 1.0f;
+            Pitch = 1.0f;
+            Loop = false;
+        }
     }
 }

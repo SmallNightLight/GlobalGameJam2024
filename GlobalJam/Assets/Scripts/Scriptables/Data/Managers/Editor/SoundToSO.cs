@@ -32,7 +32,12 @@ namespace ScriptableArchitecture.Data
                             AssetDatabase.CreateFolder(previousPath.Substring(0, previousPath.LastIndexOf("/")), previousPath.Substring(previousPath.LastIndexOf("/") + 1));
                     }
 
-                    asset.Value.AudioClip = (AudioClip)AssetDatabase.LoadAssetAtPath(audioClipPath, typeof(AudioClip));
+                    SoundEffect soundEffect = new SoundEffect();
+                    soundEffect.AudioClip = (AudioClip)AssetDatabase.LoadAssetAtPath(audioClipPath, typeof(AudioClip));
+
+                    asset.VariableType = Core.VariableType.Variable;
+                    asset.SetStartValueImmediatly(soundEffect);
+                    asset.InitializeTypeVariable = Core.InitializeType.ReadOnly;
 
                     string newPath = path.Substring(0, path.LastIndexOf(".")) + ".asset";
 

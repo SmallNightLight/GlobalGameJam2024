@@ -104,6 +104,12 @@ namespace ScriptableArchitecture.Core
             Log(_stacktraceVariable, $"Set value to {Value}");
         }
 
+        public void SetStartValueImmediatly(T value)
+        {
+            _startValue = value;
+            Log(_stacktraceVariable, $"Set start value to {_startValue}");
+        }
+
 
         //Event
 

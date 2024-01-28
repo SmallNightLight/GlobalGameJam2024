@@ -264,6 +264,53 @@ MonoBehaviour:
     _isVariable: 1
     _variable: {fileID: 11400000, guid: 6ae601335f92eee49a6a2aae1d929a68, type: 2}
     _constant: 0
+  isVisible:
+    _isVariable: 0
+    _variable: {fileID: 0}
+    _constant: 0
+  _soundEffectRaiser:
+    _isVariable: 1
+    _variable: {fileID: 11400000, guid: 39492007180ab1b438103e75b47e190e, type: 2}
+    _constant:
+      audioMixerSnapshot: {fileID: 0}
+      AudioClip: {fileID: 0}
+      Volume: 0
+      Pitch: 0
+      Loop: 0
+  _footsteps:
+  - _isVariable: 1
+    _variable: {fileID: 11400000, guid: 9f08b645fcb38e144b9831ab2a655b85, type: 2}
+    _constant:
+      audioMixerSnapshot: {fileID: 0}
+      AudioClip: {fileID: 0}
+      Volume: 0
+      Pitch: 0
+      Loop: 0
+  - _isVariable: 1
+    _variable: {fileID: 11400000, guid: 4faa80ccb46cbe843b6dfeb5a7bb0e6b, type: 2}
+    _constant:
+      audioMixerSnapshot: {fileID: 0}
+      AudioClip: {fileID: 0}
+      Volume: 0
+      Pitch: 0
+      Loop: 0
+  - _isVariable: 1
+    _variable: {fileID: 11400000, guid: 8a57935f75a6df149871e94ef45037a4, type: 2}
+    _constant:
+      audioMixerSnapshot: {fileID: 0}
+      AudioClip: {fileID: 0}
+      Volume: 0
+      Pitch: 0
+      Loop: 0
+  - _isVariable: 1
+    _variable: {fileID: 11400000, guid: 15b552122a813ac428ed2f10bedcb794, type: 2}
+    _constant:
+      audioMixerSnapshot: {fileID: 0}
+      AudioClip: {fileID: 0}
+      Volume: 0
+      Pitch: 0
+      Loop: 0
+  _footstepTime: {x: 0.3, y: 0.5}
 --- !u!95 &7424098984252041423
 Animator:
   serializedVersion: 5
