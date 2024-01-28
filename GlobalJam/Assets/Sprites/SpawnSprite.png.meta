@@ -126,12 +126,12 @@ TextureImporter:
       name: SpawnSprite_0
       rect:
         serializedVersion: 2
-        x: 2000
-        y: 1289
-        width: 654
-        height: 504
+        x: 193
+        y: 508
+        width: 498
+        height: 449
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -139,6 +139,27 @@ TextureImporter:
       bones: []
       spriteID: 49491db29f2869649b9eb5ae13c7a964
       internalID: 875062737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpawnSprite_1
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 59
+        width: 618
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2c179e0364307449a77c3ef3fc5eaf2
+      internalID: -356476676
       vertices: []
       indices: 
       edges: []
@@ -155,6 +176,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       SpawnSprite_0: 875062737
+      SpawnSprite_1: -356476676
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

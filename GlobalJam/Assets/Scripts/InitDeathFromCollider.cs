@@ -10,6 +10,7 @@ public class InitDeathFromCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag != "Player") return;
         if (!activeTreeEvent.Value) return;
 
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
