@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject ExplodingAnim;
     [SerializeField] GameObject EatenByRock;
 
+    [SerializeField] private IntReference _deathCounter;
+
     List<Coroutine> coroutinesInMotion;
     private void Awake()
     {
@@ -101,6 +103,7 @@ public class GameManager : MonoBehaviour
 
     public void Death(deathEvents deathType)
     {
+        _deathCounter.Value++;
         coroutinesInMotion.Add(StartCoroutine(deathType + "Death"));
     }
 

@@ -8,14 +8,10 @@ public class InitDeathFromCollider : MonoBehaviour
     public GameManager.deathEvents typeOfDeath;
     [SerializeField] private BoolReference activeTreeEvent;
 
-
-    private void Start()
-    {
-        if (activeTreeEvent.Value)
-            Destroy(gameObject.GetComponent<BoxCollider2D>());
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!activeTreeEvent.Value) return;
+
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         activeTreeEvent.Value = true;
         GameManager.Instance.Death(typeOfDeath);      

@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeOfDeath: 6
   activeTreeEvent:
-    _isVariable: 1
+    _isVariable: 0
     _variable: {fileID: 11400000, guid: 2c3202151ddc1d946a0a9657a3aae2fe, type: 2}
-    _constant: 0
+    _constant: 1
+  _isRock: 1

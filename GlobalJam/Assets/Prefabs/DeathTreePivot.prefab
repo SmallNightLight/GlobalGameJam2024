@@ -145,9 +145,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeOfDeath: 3
   activeTreeEvent:
-    _isVariable: 0
+    _isVariable: 1
     _variable: {fileID: 11400000, guid: 40bf17163272a264698e88ec32c0763d, type: 2}
     _constant: 0
+  _isRock: 0
 --- !u!1 &7839140738462936055
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,12 +194,16 @@ PrefabInstance:
       value: DeathTree
       objectReference: {fileID: 0}
     - target: {fileID: 2517648521464706117, guid: d24102eaef35fb64ebf42687979321f1, type: 3}
+      propertyPath: _isRock
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2517648521464706117, guid: d24102eaef35fb64ebf42687979321f1, type: 3}
       propertyPath: typeOfDeath
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2517648521464706117, guid: d24102eaef35fb64ebf42687979321f1, type: 3}
       propertyPath: activeTreeEvent._isVariable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5498010598441441086, guid: d24102eaef35fb64ebf42687979321f1, type: 3}
       propertyPath: m_LocalScale.x
