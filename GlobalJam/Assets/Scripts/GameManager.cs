@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject ExplodingAnim;
     [SerializeField] GameObject EatenByRock;
 
+    List<Coroutine> coroutinesInMotion;
     private void Awake()
     {
         if(Instance == null)
@@ -60,12 +61,16 @@ public class GameManager : MonoBehaviour
         //StartCoroutine(CreateDeathOrder());
 
         deathPrefabInScene = new List<GameObject>();
-        //REMOVE LATER !
-        StartCoroutine(CreateDeathInScene());
+        coroutinesInMotion = new List<Coroutine>();
+
+        //REMOVE LATER ! //nvm
+        coroutinesInMotion.Add(StartCoroutine(CreateDeathInScene()));
         DontDestroyOnLoad(gameObject);
+
+
     }
 
-    IEnumerator CreateDeathOrder()
+    /*IEnumerator CreateDeathOrder()
     {
         while(deathOrder.Count != Enum.GetValues(typeof(deathEvents)).Length)
         {
@@ -81,10 +86,11 @@ public class GameManager : MonoBehaviour
         currentDeathInScene = deathOrder[0];
         deathOrder.RemoveAt(0);
         yield return null;
-    }
+    }*/
 
     IEnumerator CreateDeathInScene()
     {
+        
         foreach(var death in deathPrefabs)
         {
             deathPrefabInScene.Add(Instantiate(death, new Vector3(), Quaternion.identity));
@@ -95,7 +101,7 @@ public class GameManager : MonoBehaviour
 
     public void Death(deathEvents deathType)
     {
-        StartCoroutine(deathType + "Death");
+        coroutinesInMotion.Add(StartCoroutine(deathType + "Death"));
     }
 
     IEnumerator ShowTragicEnd()
@@ -170,6 +176,16 @@ public class GameManager : MonoBehaviour
         deathOrder.RemoveAt(0);*/
         canMove.Value = true;
         playerIsVisible.Value = true;
+
+        foreach(var cor in coroutinesInMotion)
+        {
+            if(cor != null)
+            {
+                StopCoroutine(cor);
+            }
+        }
+        coroutinesInMotion.Clear();
+        
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
 
         while (!asyncLoad.isDone)
